@@ -18,12 +18,13 @@ const definition: Table.Definition = {
       title: 'Population',
       sort: false
     }
-  ]
+  ],
+  selectedRows: []
 };
 
 @Component({
   selector: 'my-planets-table',
-  template: '<hlc-clr-table [selectedRows]="selectedRows" (selectedRowsChanged)="onSelectedRowsChanged($event)" [definition]="definition" [dataProvider]="dataProvider"></hlc-clr-table>',
+  template: '<hlc-clr-table (selectedRowsChanged)="onSelectedRowsChanged($event)" [definition]="definition" [dataProvider]="dataProvider"></hlc-clr-table>',
   styleUrls: ['./palnets-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 
@@ -31,8 +32,6 @@ const definition: Table.Definition = {
 export class TableComponent {
   readonly definition = definition;
   readonly dataProvider: Table.Data.DataProvider;
-  selectedRows: string[] = [];
-
   @ViewChild(HlcClrTableComponent, { static: true }) tableComponent: HlcClrTableComponent;
 
   constructor(swapi: SWAPIService) {
