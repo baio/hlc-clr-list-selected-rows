@@ -6,7 +6,7 @@ import { SWAPIService } from './swapi.service';
 import { AppModels } from './app.models';
 
 // Provide table UI definition in js object
-const table: TableDescription = {
+const definition: Table.Definition = {
   cols: [
     {
       id: 'name',
@@ -23,13 +23,13 @@ const table: TableDescription = {
 
 @Component({
   selector: 'my-planets-table',
-  template: '<hlc-clr-table [selectedRows]="selectedRows" (selectedRowsChanged)="onSelectedRowsChanged($event)" [table]="table" [dataProvider]="dataProvider"></hlc-clr-table>',
+  template: '<hlc-clr-table [selectedRows]="selectedRows" (selectedRowsChanged)="onSelectedRowsChanged($event)" [definition]="definition" [dataProvider]="dataProvider"></hlc-clr-table>',
   styleUrls: ['./palnets-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class TableComponent {
-  readonly table = table;
+  readonly definition = definition;
   readonly dataProvider: Table.Data.DataProvider;
   selectedRows: string[] = [];
 
